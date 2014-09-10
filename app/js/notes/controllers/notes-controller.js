@@ -22,7 +22,7 @@ module.exports = function(app) {
         .success(function(data) {
           $scope.notes.push(data);
         })
-        .error(function(data, status) {
+        .error(function(data) {
           console.log(data);
         });
     };
@@ -34,7 +34,7 @@ module.exports = function(app) {
     $scope.saveNote = function(note) {
       note.editing = null;
       $http.put('api/v_0_0_1/notes/' + note._id, note)
-        .success(function(data) {
+        .success(function() {
           $scope.getAllNotes();
         })
         .error(function(data) {
@@ -44,7 +44,7 @@ module.exports = function(app) {
 
     $scope.deleteNote = function(note) {
       $http.delete('api/v_0_0_1/notes/' + note._id, note)
-        .success(function(data) {
+        .success(function() {
           $scope.getAllNotes();
         })
         .error(function(data) {
@@ -53,7 +53,7 @@ module.exports = function(app) {
     };
 
     $scope.deleteAll = function() {
-      $scope.notes.forEach(function(note) {$scope.deleteNote(note)});
-    }
+      $scope.notes.forEach(function(note) {$scope.deleteNote(note);});
+    };
   });
 };

@@ -9,6 +9,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+
+  var allJavaScriptFilePaths = ['app/js/**/*.js','models/**/*.js','routes/**/*.js','server.js'];
 
   grunt.initConfig({
     clean: {
@@ -28,9 +31,16 @@ module.exports = function(grunt) {
     },
 
     jscs: {
-      src: ['app/js/**/*.js','models/**/*.js','routes/**/*.js','server.js'],
+      src: allJavaScriptFilePaths,
       options: {
         config: '.jscsrc',
+      }
+    },
+
+    jshint: {
+      all: allJavaScriptFilePaths,
+      options: {
+        jshintrc: true
       }
     },
 
@@ -96,10 +106,11 @@ module.exports = function(grunt) {
       }
     }
   });
+  grunt.registerTask('style', ['jshint','jscs']);
   grunt.registerTask('build:dev', ['clean:dev', 'browserify:dev', 'copy:dev']);
   grunt.registerTask('angulartest', ['browserify:angulartest', 'karma:unit']);
   grunt.registerTask('angulartestwatch', ['angulartest', 'watch:angulartest']);
-  grunt.registerTask('test', ['angulartest', 'simplemocha']);
+  grunt.registerTask('test', ['style', 'angulartest', 'simplemocha']);
   grunt.registerTask('buildtest', ['test', 'build:dev']);
   grunt.registerTask('default', ['buildtest', 'watch:express']);
 };
