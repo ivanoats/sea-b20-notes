@@ -12,6 +12,6 @@ install:
 - bower install
 notifications:
   slack: codefellows:fkQPTxzD0bnugHw5aKQ8EZwF
-webhooks:
-  - urls:
-    - https://webhooks.gitter.im/e/12f31544873d7d3a0475
+  webhooks:
+    - urls:
+      - https://webhooks.gitter.im/e/2a04a73d50e0931bd263
