@@ -2,9 +2,9 @@
 // Generated on Tue Sep 09 2014 13:58:24 GMT-0700 (PDT)
 'use strict';
 
-var browsers = ['Chrome', 'PhantomJS'];
+var browsers = ['Chrome', 'PhantomJS','Firefox'];
 if ( /^win/.test(process.platform) ) {
-  browsers = ['IE'];
+  browsers = ['IE','Chrome', 'PhantomJS','Firefox'];
 }
 if (process.env.TRAVIS ) {
   browsers = ['PhantomJS'];
