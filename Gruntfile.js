@@ -8,6 +8,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express-server');
+  grunt.loadNpmTasks('grunt-jscs');
 
   grunt.initConfig({
     clean: {
@@ -23,6 +24,13 @@ module.exports = function(grunt) {
         src: ['*.html', '*.css', 'views/**/*.html'],
         dest: 'build/',
         filter: 'isFile'
+      }
+    },
+
+    jscs: {
+      src: ['app/js/**/*.js','models/**/*.js','routes/**/*.js','server.js'],
+      options: {
+        config: '.jscsrc',
       }
     },
 
