@@ -2,7 +2,14 @@
 // Generated on Tue Sep 09 2014 13:58:24 GMT-0700 (PDT)
 'use strict';
 
-var isWin = /^win/.test(process.platform);
+var browsers = ['Chrome', 'PhantomJS'];
+if ( /^win/.test(process.platform) ) {
+  browsers = ['IE'];
+}
+if (process.env.TRAVIS ) {
+  browsers = ['PhantomJS'];
+}
+
 module.exports = function(config) {
   config.set({
 
@@ -56,7 +63,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: isWin? ['IE'] : ['Chrome', 'PhantomJS'],
+    browsers: browsers,
 
 
     // Continuous Integration mode
