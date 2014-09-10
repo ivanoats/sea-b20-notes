@@ -11,6 +11,7 @@ URL
 
 - start MongoDB `mongod --dbpath-./db --smallfiles`
 - `grunt test`
+[![Build Status](https://travis-ci.org/codefellows/sea-b20-notes.svg)](https://travis-ci.org/codefellows/sea-b20-notes)
 
 ## License
 
