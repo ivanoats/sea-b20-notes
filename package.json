@@ -4,7 +4,7 @@
   "description": "A simple note taking app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "karma": "^0.12.23",
     "karma-chrome-launcher": "^0.1.4",
     "karma-ie-launcher": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4",
     "karma-jasmine": "^0.1.5",
     "karma-mocha": "^0.1.8",
     "mocha": "^1.21.4",
