@@ -4,7 +4,10 @@
 
 var browsers = ['Chrome', 'PhantomJS','Firefox'];
 if ( /^win/.test(process.platform) ) {
-  browsers = ['IE','Chrome', 'PhantomJS','Firefox'];
+  browsers.push('IE');
+}
+if ( /^darwin/.test(process.platform) ) {
+  browsers.push('Safari');
 }
 if (process.env.TRAVIS ) {
   browsers = ['PhantomJS'];
