@@ -14,6 +14,8 @@ URL
 
 [![Build Status](https://travis-ci.org/codefellows/sea-b20-notes.svg)](https://travis-ci.org/codefellows/sea-b20-notes)
 
+[![Coverage Status](https://img.shields.io/coveralls/codefellows/sea-b20-notes.svg)](https://coveralls.io/r/codefellows/sea-b20-notes)
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
