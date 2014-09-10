@@ -4,7 +4,7 @@
   "description": "A simple note taking app",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt travis"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,7 @@
   "dependencies": {
     "body-parser": "^1.6.3",
     "express": "^4.7.4",
-    "mongoose": "^3.8.14",
-    "sinon": "^1.10.3"
+    "mongoose": "^3.8.14"
   },
   "devDependencies": {
     "angular": "^1.2.23",
@@ -39,6 +38,7 @@
     "grunt-jscs": "^0.7.1",
     "grunt-karma": "^0.9.0",
     "grunt-mocha": "^0.4.11",
+    "grunt-mocha-cov": "^0.3.0",
     "grunt-simple-mocha": "^0.4.0",
     "hbsify": "^1.0.0",
     "jquery": "^1.8.1",
@@ -52,6 +52,18 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-safari-launcher": "^0.1.1",
     "mocha": "^1.21.4",
+    "mocha-term-cov-reporter": "^0.2.0",
     "sinon": "^1.10.3"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "app"
+      ],
+      "data-cover-never": [
+        "node_modules",
+        "test"
+      ]
+    }
   }
 }

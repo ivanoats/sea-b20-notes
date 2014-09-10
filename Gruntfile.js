@@ -10,6 +10,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-mocha-cov');
 
   var allJavaScriptFilePaths = ['app/js/**/*.js','models/**/*.js','routes/**/*.js','server.js'];
 
@@ -41,6 +42,39 @@ module.exports = function(grunt) {
       all: allJavaScriptFilePaths,
       options: {
         jshintrc: true
+      }
+    },
+
+    mochacov: {
+      coverage: {
+        options: {
+          reporter: 'mocha-term-cov-reporter',
+          coverage: true
+        }
+      },
+      coveralls: {
+        options: {
+          coveralls: {
+            serviceName: 'travis-ci'
+          }
+        }
+      },
+      unit: {
+        options: {
+          reporter: 'spec',
+          require: ['chai']
+        }
+      },
+      html: {
+        options: {
+          reporter: 'html-cov',
+          require: ['chai']
+        }
+      },
+      options: {
+        files: 'test/mocha/api/*.js',
+        ui: 'bdd',
+        colors: true
       }
     },
 
@@ -111,6 +145,7 @@ module.exports = function(grunt) {
   grunt.registerTask('angulartest', ['browserify:angulartest', 'karma:unit']);
   grunt.registerTask('angulartestwatch', ['angulartest', 'watch:angulartest']);
   grunt.registerTask('test', ['style', 'angulartest', 'simplemocha']);
+  grunt.registerTask('travis', ['style', 'angulartest', 'mochacov:unit', 'mochacov:coverage', 'mochacov:coveralls']);
   grunt.registerTask('buildtest', ['test', 'build:dev']);
   grunt.registerTask('default', ['buildtest', 'watch:express']);
 };

@@ -10,6 +10,7 @@
     "after"      : false,
     "afterEach"  : false,
     "equal"      : false,
+    "expect"     : false,
     "angular"    : false
   },
   "jquery": true,
@@ -20,5 +21,6 @@
   "undef": true,
   "unused": true,
   "indent": 2,
-  "node": true
+  "node": true,
+  "browser": true
 }
