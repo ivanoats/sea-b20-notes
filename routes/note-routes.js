@@ -1,3 +1,5 @@
+'use strict';
+
 var Note = require('../models/note');
 
 module.exports = function(app) {
@@ -11,7 +13,7 @@ module.exports = function(app) {
   });
 
   app.post(baseUrl, function(req, res) {
-    var note = new Note(req.body); 
+    var note = new Note(req.body);
     note.save(function(err, resNote) {
       if (err) return res.status(500).json(err);
       return res.send(resNote);
@@ -35,7 +37,7 @@ module.exports = function(app) {
   });
 
   app.delete(baseUrl + '/:id', function(req, res) {
-    Note.remove({'_id': req.params.id}, function(err, resNote) {
+    Note.remove({'_id': req.params.id}, function(err) {
       if (err) return res.status(500).json(err);
       return res.status(200).json({'msg': 'deleted'});
     });
