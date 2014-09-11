@@ -1,5 +1,17 @@
 // Karma configuration
 // Generated on Tue Sep 09 2014 13:58:24 GMT-0700 (PDT)
+'use strict';
+
+var browsers = ['Chrome', 'PhantomJS','Firefox'];
+if ( /^win/.test(process.platform) ) {
+  browsers.push('IE');
+}
+if ( /^darwin/.test(process.platform) ) {
+  browsers.push('Safari');
+}
+if (process.env.TRAVIS ) {
+  browsers = ['PhantomJS'];
+}
 
 module.exports = function(config) {
   config.set({
@@ -23,7 +35,6 @@ module.exports = function(config) {
     exclude: [
       '**/*.swp'
     ],
-
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -55,7 +66,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: browsers,
 
 
     // Continuous Integration mode
