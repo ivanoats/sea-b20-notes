@@ -1,3 +1,6 @@
+'use strict';
+/*jshint expr:true */
+
 require('../../../server');
 var chai = require('chai');
 var chaihttp = require('chai-http');
@@ -11,7 +14,7 @@ describe('noteRoutes', function() {
     chai.request('http://localhost:3000')
       .post('/api/v_0_0_1/notes')
       .req(function(req) {
-        req.send({"noteBody" : "my new note"});
+        req.send({'noteBody' : 'my new note'});
       })
       .res(function(res) {
           expect(res).to.have.status(200);
@@ -40,9 +43,9 @@ describe('noteRoutes', function() {
           expect(res).to.have.status(200);
           expect(res.body.noteBody).to.eql('my new note');
           expect(res.body._id).to.eql(id);
-          done();  
+          done();
         });
-    }); 
+    });
 
     it('updates a note', function(done) {
       chai.request('http://localhost:3000')
@@ -64,7 +67,7 @@ describe('noteRoutes', function() {
           expect(res).to.have.status(200);
           expect(res.body.msg).to.eql('deleted');
           done();
-        });  
+        });
     });
 
 });

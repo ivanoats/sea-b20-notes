@@ -2,13 +2,13 @@
 
 var Note = require('../models/note');
 
-module.exports = function(app) {
+module.exports = function(app, passport, jwtauth) {
   var baseUrl = '/api/v_0_0_1/notes';
 
-  app.get(baseUrl, function(req, res){
+  app.get(baseUrl, jwtauth, function(req, res){
     Note.find({}, function(err, notes) {
       if (err) return res.status(500).json(err);
-      return res.json(notes);
+      return res.status(200).json(notes);
     });
   });
 
