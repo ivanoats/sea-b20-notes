@@ -1,14 +1,24 @@
 'use strict';
 /*jshint expr:true */
 
+process.env.MONGO_URL = 'mongodb://localhost/notes-test';
 require('../../../server');
 var chai = require('chai');
+var mongoose = require('mongoose');
 var chaihttp = require('chai-http');
 chai.use(chaihttp);
 var expect = chai.expect;
 
 describe('noteRoutes', function() {
   var id;
+
+  before('create a user and save its jwt',function() {
+    // do this
+  });
+
+  after('drop dummy data', function() {
+    mongoose.connection.db.dropDatabase();
+  });
 
   it('creates a new note', function(done) {
     chai.request('http://localhost:3000')
