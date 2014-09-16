@@ -55,7 +55,7 @@ module.exports = function(grunt) {
       },
       angulartest: {
         options: {
-          transform: ['debowerify'],
+          transform: ['debowerify','istanbulify'],
           debug: true
         },
         src: ['test/angular/**/*test.js'],
