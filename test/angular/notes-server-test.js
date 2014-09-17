@@ -1,4 +1,5 @@
 'use strict';
+/* istanbulify ignore file */
 
 require('../../app/js/app.js');
 require('angular-mocks');
@@ -23,7 +24,7 @@ describe('notesServer service', function() {
     $httpBackend.expectGET('/api/v_0_0_1/notes').respond(200, [{}]);
     ns.index();
 
-    $httpBackend.flush();    
+    $httpBackend.flush();
   });
 
   it('should make a post request', function() {

@@ -1,4 +1,5 @@
 'use strict';
+/* istanbulify ignore file */
 
 require('../../app/js/app.js');
 require('angular-mocks');
@@ -17,13 +18,13 @@ describe('NotesController', function() {
 
   it('should able to create a new controller', function() {
     var notesController = $controllerConstructor('notesController', {$scope: scope });
-    expect(typeof notesController).toBe('object'); 
+    expect(typeof notesController).toBe('object');
   });
 
   describe('rest requests', function() {
     var ctrl;
     beforeEach(angular.mock.inject(function(_$httpBackend_) {
-      $httpBackend = _$httpBackend_; 
+      $httpBackend = _$httpBackend_;
       $httpBackend.expectGET('/api/v_0_0_1/notes').respond(200, [{'noteBody': 'test note'}]);
     }));
 
