@@ -1,5 +1,6 @@
 # Seattle B20 Notes Example App
 A simple notes program built with Backbone and Express in JavaScript
+Check out the branches for examples of various features, including Angular.
 
 ## Install
 
